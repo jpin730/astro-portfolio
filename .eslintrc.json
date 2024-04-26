@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "love",
+    "plugin:astro/recommended",
+    "plugin:astro/jsx-a11y-recommended",
+    "prettier"
+  ]
+}
