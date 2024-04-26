@@ -27,8 +27,8 @@ export default {
         },
         '.p': { color: theme('colors.gray.500') },
         '.dark .p': { color: theme('colors.gray.400') },
-        '.bg-light': { backgroundColor: theme('colors.white') },
-        '.bg-dark': { backgroundColor: theme('colors.gray.800') },
+        '.bg-light': { backgroundColor: theme('colors.gray.50') },
+        '.bg-dark': { backgroundColor: theme('colors.black') },
       })
     },
   ],
