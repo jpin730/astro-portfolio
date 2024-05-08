@@ -1,7 +1,22 @@
 ---
+import NotFoundComponent from '../components/NotFoundComponent.astro'
+import ProfileComponent from '../components/ProfileComponent.astro'
 import Layout from '../layouts/Layout.astro'
+import { supabase } from '../lib/supabase'
+
+const { data } = await supabase.from('profile').select()
+
+const profile = data?.at(0)
+
+console.log(profile)
 ---
 
-<Layout title="Jaime Pineda's Portfolio">
-  <h1 class="h">Portfolio</h1>
-</Layout>
+{
+  profile ? (
+    <Layout profile={profile}>
+      <ProfileComponent profile={profile} />
+    </Layout>
+  ) : (
+    <NotFoundComponent />
+  )
+}

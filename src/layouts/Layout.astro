@@ -1,14 +1,15 @@
 ---
+import type { Profile } from '../lib/types/entities.types'
+
 interface Props {
-  title: string
+  profile: Profile
 }
 
-const { title } = Astro.props
+const { name, avatar, description } = Astro.props.profile
+
+const title = `${name}'s Portfolio`
 
 const { href, hostname } = Astro.url
-const image = 'https://github.com/jpin730.png'
-const description =
-  'Web Developer with experience building responsive websites and a strong UX-based approach. I am a passionate self-learner and open-minded to new ways of solving problems.'
 ---
 
 <!doctype html>
@@ -34,7 +35,7 @@ const description =
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={avatar} />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -42,7 +43,7 @@ const description =
     <meta property="twitter:url" content={href} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={avatar} />
   </head>
   <body class:list={{ dark: false }} class="bg-light dark:bg-dark">
     <slot />
