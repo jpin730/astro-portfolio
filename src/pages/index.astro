@@ -1,5 +1,5 @@
 ---
-import NotFoundComponent from '../components/NotFoundComponent.astro'
+import NotAvailableComponent from '../components/NotAvailableComponent.astro'
 import DefaultHtml from '../htmls/DefaultHtml.astro'
 import MainHtml from '../htmls/MainHtml.astro'
 import MainLayout from '../layouts/MainLayout.astro'
@@ -11,16 +11,13 @@ const profile = data?.at(0)
 ---
 
 {
-  profile != null && (
+  profile == null ? (
+    <DefaultHtml>
+      <NotAvailableComponent />
+    </DefaultHtml>
+  ) : (
     <MainHtml profile={profile}>
       <MainLayout profile={profile} />
     </MainHtml>
-  )
-}
-{
-  profile == null && (
-    <DefaultHtml>
-      <NotFoundComponent />
-    </DefaultHtml>
   )
 }

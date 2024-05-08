@@ -16,6 +16,10 @@ export default {
         h5: { fontSize: theme('fontSize.base') },
         h6: { fontSize: theme('fontSize.sm') },
         p: { fontSize: theme('fontSize.base') },
+        a: {
+          color: theme('colors.blue.500'),
+          textDecorationLine: 'underline',
+        },
       })
       addComponents({
         '.h': {
