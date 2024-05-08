@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src/**/*.{ts,astro}",
-    "format": "prettier --write --ignore-unknown --list-different ."
+    "format": "prettier --write --ignore-unknown --list-different .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
@@ -27,9 +28,15 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^1.0.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "supabase": "^1.165.0"
+  },
+  "lint-staged": {
+    "**/*.{ts,astro}": "npx eslint --fix",
+    "**/*": "npx prettier --write --ignore-unknown"
   }
 }

@@ -4,5 +4,8 @@
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
     "prettier"
-  ]
+  ],
+  "rules": {
+    "no-console": "error"
+  }
 }
