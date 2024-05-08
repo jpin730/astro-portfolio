@@ -1,0 +1,21 @@
+---
+import type { Profile } from '../lib/types/entities.types'
+
+interface Props {
+  profile: Profile
+}
+
+const { avatar, description, name, techs } = Astro.props.profile
+console.log(name)
+---
+
+<section>
+  <div>
+    <h1 class="h">{name}</h1>
+    <p>{description}</p>
+    <img src={techs} alt={`${name}'s techs`} />
+  </div>
+  <div>
+    <img src={avatar} alt={`${name}'s avatar`} />
+  </div>
+</section>
