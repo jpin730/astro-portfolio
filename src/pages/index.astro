@@ -1,22 +1,26 @@
 ---
 import NotFoundComponent from '../components/NotFoundComponent.astro'
-import ProfileComponent from '../components/ProfileComponent.astro'
-import Layout from '../layouts/Layout.astro'
+import DefaultHtml from '../htmls/DefaultHtml.astro'
+import MainHtml from '../htmls/MainHtml.astro'
+import MainLayout from '../layouts/MainLayout.astro'
 import { supabase } from '../lib/supabase'
 
 const { data } = await supabase.from('profile').select()
 
 const profile = data?.at(0)
-
-console.log(profile)
 ---
 
 {
-  profile ? (
-    <Layout profile={profile}>
-      <ProfileComponent profile={profile} />
-    </Layout>
-  ) : (
-    <NotFoundComponent />
+  profile != null && (
+    <MainHtml profile={profile}>
+      <MainLayout profile={profile} />
+    </MainHtml>
+  )
+}
+{
+  profile == null && (
+    <DefaultHtml>
+      <NotFoundComponent />
+    </DefaultHtml>
   )
 }

@@ -1,0 +1,12 @@
+---
+import ProfileComponent from '../components/ProfileComponent.astro'
+import type { Profile } from '../lib/types/entities.types'
+
+interface Props {
+  profile: Profile
+}
+
+const { profile } = Astro.props
+---
+
+<ProfileComponent profile={profile} />
