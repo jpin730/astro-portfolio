@@ -13,7 +13,7 @@ const { href, hostname } = Astro.url
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth focus:scroll-auto">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +25,11 @@ const { href, hostname } = Astro.url
     <link rel="manifest" href="/site.webmanifest" />
 
     <meta name="generator" content={Astro.generator} />
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <!-- HTML Meta Tags -->
     <title>{title}</title>
@@ -45,9 +50,10 @@ const { href, hostname } = Astro.url
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={avatar} />
   </head>
-  <body class:list={{ dark: false }} class="bg-light dark:bg-dark">
+  <body
+    class:list={{ dark: false }}
+    class="dark bg-gray-50 text-gray-700 dark:bg-black dark:text-gray-200"
+  >
     <slot />
   </body>
 </html>
-
-<style is:global></style>

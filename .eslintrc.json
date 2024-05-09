@@ -6,6 +6,7 @@
     "prettier"
   ],
   "rules": {
-    "no-console": "error"
+    "no-console": "error",
+    "astro/jsx-a11y/anchor-is-valid": "off"
   }
 }

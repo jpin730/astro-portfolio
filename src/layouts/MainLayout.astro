@@ -1,4 +1,5 @@
 ---
+import NavbarComponent from '../components/NavbarComponent.astro'
 import ProfileComponent from '../components/ProfileComponent.astro'
 import type { Profile } from '../lib/types/entities.types'
 
@@ -9,4 +10,8 @@ interface Props {
 const { profile } = Astro.props
 ---
 
-<ProfileComponent profile={profile} />
+<NavbarComponent />
+
+<main class="mt-16">
+  <ProfileComponent profile={profile} />
+</main>
