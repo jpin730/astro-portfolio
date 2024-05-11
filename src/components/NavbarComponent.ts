@@ -1,10 +1,6 @@
-const menuButton = document.getElementById('menu-button')
-const menuContainer = document.getElementById('menu-container')
+import { initTheme } from '../scripts/theme'
 
-menuButton?.addEventListener('click', () => {
-  menuContainer?.classList.toggle('hidden')
-  menuContainer?.classList.toggle('flex')
-})
+const menuContainer = document.getElementById('menu-container')
 
 document.addEventListener('click', (event) => {
   const isHidden = menuContainer?.classList.contains('hidden') ?? true
@@ -15,19 +11,18 @@ document.addEventListener('click', (event) => {
   const iconClicked = target instanceof HTMLImageElement
   const anyAnchorClicked = target instanceof HTMLAnchorElement
 
+  const menuButtonClicked = targetInnerText === 'menu'
   const closeClicked = targetInnerText === 'close'
+
+  if (isHidden && menuButtonClicked) {
+    menuContainer?.classList.toggle('hidden')
+    menuContainer?.classList.toggle('flex')
+  }
 
   if (!isHidden && (iconClicked || anyAnchorClicked || closeClicked)) {
     menuContainer?.classList.add('hidden')
     menuContainer?.classList.remove('flex')
   }
-
-  const themeButtonClicked = ['dark_mode', 'light_mode'].includes(
-    targetInnerText,
-  )
-  if (themeButtonClicked) {
-    target.innerText =
-      targetInnerText === 'dark_mode' ? 'light_mode' : 'dark_mode'
-    document.body.classList.toggle('dark')
-  }
 })
+
+initTheme()
