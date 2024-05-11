@@ -31,14 +31,14 @@ const menuItems: MenuItem[] = [
     </div>
     <button
       id="menu-button"
-      class="inline-flex items-center justify-center p-2 text-sm md:hidden"
+      class="inline-flex items-center justify-center rounded-full p-2 text-sm transition-colors hover:bg-black/5 md:hidden dark:hover:bg-white/10"
     >
       <span class="sr-only">Open main menu</span>
-      <span class="material-icons">menu</span>
+      <span class="material-icons-outlined">menu</span>
     </button>
     <div
       id="menu-container"
-      class="absolute left-0 top-0 hidden h-dvh w-dvw flex-col md:static md:block md:h-auto md:w-auto"
+      class="absolute left-0 top-0 hidden h-dvh w-dvw flex-col md:static md:flex md:h-auto md:w-auto md:flex-row md:flex-nowrap md:items-center"
     >
       <div
         class="flex h-16 items-center justify-between bg-white p-4 md:hidden dark:bg-black"
@@ -46,20 +46,30 @@ const menuItems: MenuItem[] = [
         <a href="#">
           <img src="favicon.ico" class="h-8 drop-shadow" alt="Page icon" />
         </a>
-        <button class="inline-flex items-center justify-center p-2 text-sm">
-          <span class="sr-only">Close main menu</span>
-          <span class="material-icons">close</span>
-        </button>
+        <span>
+          <button
+            class="inline-flex items-center justify-center rounded-full p-2 text-sm transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            <span class="sr-only">Change theme</span>
+            <span class="material-icons-outlined">dark_mode</span>
+          </button>
+          <button
+            class="inline-flex items-center justify-center rounded-full p-2 text-sm transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+          >
+            <span class="sr-only">Close main menu</span>
+            <span class="material-icons-outlined">close</span>
+          </button>
+        </span>
       </div>
       <ul
-        class="flex w-full flex-grow flex-col divide-y bg-white px-4 md:static md:flex-row md:space-x-4 md:divide-y-0 md:p-0 md:shadow-none dark:bg-black"
+        class="flex w-full flex-grow flex-col divide-y bg-white px-4 md:static md:flex-row md:divide-y-0 md:p-0 md:shadow-none dark:bg-black"
       >
         {
           menuItems.map(({ name, url }) => (
             <li>
               <a
                 href={url}
-                class="block rounded py-2 hover:underline md:p-0 md:px-3"
+                class="block py-4 transition-colors hover:bg-black/5 md:rounded md:px-4 md:py-2 dark:hover:bg-white/10"
               >
                 {name}
               </a>
@@ -67,28 +77,14 @@ const menuItems: MenuItem[] = [
           ))
         }
       </ul>
+      <button
+        class="inline-flex items-center justify-center rounded-full p-2 text-sm transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+      >
+        <span class="sr-only">Change theme</span>
+        <span class="material-icons-outlined">dark_mode</span>
+      </button>
     </div>
   </div>
 </nav>
 
-<script>
-  const menuButton = document.getElementById('menu-button')
-  const menuContainer = document.getElementById('menu-container')
-
-  menuButton?.addEventListener('click', () => {
-    menuContainer?.classList.toggle('hidden')
-    menuContainer?.classList.toggle('flex')
-  })
-
-  document.addEventListener('click', (event) => {
-    const isHidden = menuContainer?.classList.contains('hidden')
-    const iconClicked = event.target instanceof HTMLImageElement
-    const anyAnchorClicked = event.target instanceof HTMLAnchorElement
-    const closeClicked = (event.target as HTMLElement).innerText === 'close'
-
-    if (!isHidden && (iconClicked || anyAnchorClicked || closeClicked)) {
-      menuContainer?.classList.add('hidden')
-      menuContainer?.classList.remove('flex')
-    }
-  })
-</script>
+<script src="./NavbarComponent.ts"></script>

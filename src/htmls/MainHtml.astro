@@ -29,7 +29,7 @@ const { href, hostname } = Astro.url
     <meta name="generator" content={Astro.generator} />
 
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
 
@@ -55,7 +55,7 @@ const { href, hostname } = Astro.url
   </head>
   <body
     class:list={{ dark: false }}
-    class="dark bg-gray-50 text-gray-700 dark:bg-black dark:text-gray-200"
+    class="dark bg-gray-50 text-gray-700 transition-colors dark:bg-black dark:text-gray-200"
   >
     <slot />
   </body>
