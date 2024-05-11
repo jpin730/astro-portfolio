@@ -8,5 +8,16 @@
   "rules": {
     "no-console": "error",
     "astro/jsx-a11y/anchor-is-valid": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      },
+      "rules": {}
+    }
+  ]
 }
