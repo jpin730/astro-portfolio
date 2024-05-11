@@ -1,9 +1,15 @@
 ---
-interface Item {
+interface Props {
+  name: string
+}
+
+const { name } = Astro.props
+
+interface MenuItem {
   name: string
   url: string
 }
-const items: Item[] = [
+const menuItems: MenuItem[] = [
   { name: 'Projects', url: '#' },
   { name: 'Education', url: '#' },
 ]
@@ -17,9 +23,9 @@ const items: Item[] = [
       <a href="#" class="flex items-center space-x-3">
         <img src="favicon.ico" class="h-8 drop-shadow" alt="Page icon" />
         <span
-          class="hidden self-center whitespace-nowrap text-2xl font-semibold md:block"
+          class="hidden self-center whitespace-nowrap text-xl font-extralight tracking-widest md:block"
         >
-          Jaime Pineda
+          {name.toUpperCase()}
         </span>
       </a>
     </div>
@@ -46,10 +52,10 @@ const items: Item[] = [
         </button>
       </div>
       <ul
-        class="flex w-full flex-grow flex-col divide-y bg-white px-4 font-medium md:static md:flex-row md:space-x-4 md:divide-y-0 md:p-0 md:shadow-none dark:bg-black"
+        class="flex w-full flex-grow flex-col divide-y bg-white px-4 md:static md:flex-row md:space-x-4 md:divide-y-0 md:p-0 md:shadow-none dark:bg-black"
       >
         {
-          items.map(({ name, url }) => (
+          menuItems.map(({ name, url }) => (
             <li>
               <a
                 href={url}

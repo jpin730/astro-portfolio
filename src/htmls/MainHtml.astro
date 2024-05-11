@@ -7,6 +7,8 @@ interface Props {
 
 const { name, avatar, description } = Astro.props.profile
 
+const shortDescription = description.split('.')[0].concat('.')
+
 const title = `${name}'s Portfolio`
 
 const { href, hostname } = Astro.url
@@ -33,13 +35,14 @@ const { href, hostname } = Astro.url
 
     <!-- HTML Meta Tags -->
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={shortDescription} />
+    <link rel="canonical" href={href} />
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content={href} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={shortDescription} />
     <meta property="og:image" content={avatar} />
 
     <!-- Twitter Meta Tags -->
@@ -47,7 +50,7 @@ const { href, hostname } = Astro.url
     <meta property="twitter:domain" content={hostname} />
     <meta property="twitter:url" content={href} />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={shortDescription} />
     <meta name="twitter:image" content={avatar} />
   </head>
   <body

@@ -10,7 +10,7 @@ interface Props {
 const { profile } = Astro.props
 ---
 
-<NavbarComponent />
+<NavbarComponent name={profile.name} />
 
 <main class="mt-16">
   <ProfileComponent profile={profile} />
